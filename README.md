@@ -14,23 +14,96 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Multi-Step User Form with NextJS and TypeScript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A **multi-step user form** built with **Next**, **TypeScript**, and **Tailwind CSS**, featuring smooth animations with **Framer Motion**. This form allows users to fill out their details step by step, review their inputs, and submit the data. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Table of Contents
 
-To learn more about Next.js, take a look at the following resources:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Steps Overview](#steps-overview)
+- [Customization](#customization)
+- [License](#license)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- **Multi-step form with navigation buttons**
+- **Form validation** using `react-hook-form` and `yup`
+- **Smooth animations** powered by Framer Motion
+- **Responsive design** using Tailwind CSS
+- **Toast notification** genered by shadcn-ui
+- Displays submitted data on a **review page**
+- Dynamically **tracks the current step**
+- Reset functionality after submission
+- website visible in light and dark mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies Used
+
+- **React**: Component-based UI library
+- **Next**: Component based framework of javascript
+- **TypeScript**: Static typing for JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Framer Motion**: Animations for step transitions
+- **React Hook Form**: Form handling
+- **Shadcn-ui** : For toast notifications
+- **Yup**: Schema validation
+
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/multi-step-user-form.git
+   cd multi-step-user-form
+
+2.  Install dependencies:
+    ```bash
+    npm install 
+
+3. Start deployment server 
+    ```bash
+    npm run dev
+
+
+## Usage
+
+1. Fill in the fields step by step.
+2. Change the website into dark and light mode accordingly.
+3. Use the Next and Back buttons to navigate between steps.
+4. On the final step, review your data.
+5. Submit the form to see the entered data displayed. 
+
+
+## Steps Overview
+
+# Personal Information
+- Fields: First Name, Last Name, Email
+# Address Details
+- Fields: Country, Street, City, State, ZIP
+# Preferences
+- check boxes
+# Review and Submit
+- Displays all user inputs for review and in last submit message.
+
+
+## Customization
+- Validation Rules: Update validationSchema.ts to customize field validation.
+- Fields: Modify the Step components to add/remove fields.
+- Styling: Update tailwind.css or component class names for custom styles.
+- Animations: Tweak Framer Motion settings in App.tsx for transitions.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details
+
+## Screenshots
+
+![alt text](image.png)
+![alt text](image-3.png)
+![alt text](image-2.png)
+![alt text](image-4.png)
