@@ -1,0 +1,12 @@
+{
+  "formTitle": "Remplissez le formulaire",
+  "step1Label": "Étape 1 : Entrez votre nom",
+  "step1Placeholder": "Entrez votre nom",
+  "step2Label": "Étape 2 : Entrez votre e-mail",
+  "step2Placeholder": "Entrez votre e-mail",
+  "step3Label": "Étape 3 : Entrez votre adresse",
+  "step3Placeholder": "Entrez votre adresse",
+  "previous": "Précédent",
+  "next": "Suivant",
+  "submit": "Soumettre"
+}

@@ -1,0 +1,14 @@
+{
+  "personalInformation": "Personal Information",
+  "provideDetails": "Provide your personal details.",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "email": "Email Address",
+  "address": "Address",
+  "preferences": "Preferences",
+  "reviewAndSubmit": "Review & Submit",
+  "thankYou": "Thank you for your submission.",
+  "toggleDarkMode": "Toggle Dark Mode",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode"
+}
