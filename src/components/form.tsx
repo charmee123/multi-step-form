@@ -63,7 +63,6 @@ export default function Form() {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     trigger,
     formState: { errors }
@@ -137,7 +136,7 @@ export default function Form() {
     return () => {
       document.removeEventListener('keydown', handleKeydown);
     };
-  }, [currentStep,isSubmitted]);
+  }, [currentStep,isSubmitted,next,prev]);
 
   return (
     <section className='absolute inset-0 flex flex-col justify-between p-24'>
