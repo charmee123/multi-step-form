@@ -1,13 +1,13 @@
 'use client'
 
-import { useState,useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Toaster} from "@/components/ui/toaster";
-import { useToast } from "@/hooks/use-toast"
-import { z } from 'zod'
-import { FormDataSchema } from '@/lib/schema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { useState,useEffect } from 'react' //React hooks 
+import { motion } from 'framer-motion'  //for animation during transition
+import { Toaster} from "@/components/ui/toaster"; // toaster to show notifications
+import { useToast } from "@/hooks/use-toast" //hook for showing toasting messages
+import { z } from 'zod' //for schema validation
+import { FormDataSchema } from '@/lib/schema'  //for schema
+import { zodResolver } from '@hookform/resolvers/zod'   //for schema validation
+import { useForm, SubmitHandler } from 'react-hook-form' //for form handling with validation
  
 
 type Inputs = z.infer<typeof FormDataSchema>
@@ -38,28 +38,29 @@ const steps = [
 
 export default function Form() {
     const { toast } = useToast() // Use the toast hook
-  const [submittedData, setSubmittedData] = useState<Inputs | null>(null);
-  const [previousStep, setPreviousStep] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const delta = currentStep - previousStep
+  const [submittedData, setSubmittedData] = useState<Inputs | null>(null);  //store submitted form data
+  const [previousStep, setPreviousStep] = useState(0); //keep track of previous step
+  const [currentStep, setCurrentStep] = useState(0);  //keep track of current step
+  const [isDarkMode, setIsDarkMode] = useState(false); //state for toggle dark mode
+  const [isSubmitted, setIsSubmitted] = useState(false); //track if the form is submitted
+  const delta = currentStep - previousStep    //used for animation during step transition
 
   //dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark', !isDarkMode);
+    document.body.classList.toggle('dark', !isDarkMode);  //toggle dark class on boady
   };
 
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) {
-      document.body.classList.add('dark');
-      setIsDarkMode(true);
+      document.body.classList.add('dark'); //apply the dark mode if user selects
+      setIsDarkMode(true); //set state to dark mode
      
     }
   }, []);
 
+  //connects zod validation schema to React hook
   const {
     register,
     handleSubmit,
@@ -71,10 +72,10 @@ export default function Form() {
   })
 
   const processForm: SubmitHandler<Inputs> = data => {
-    setSubmittedData(data);
+    setSubmittedData(data);  //save the submitted data to state
     // console.log(data)
-    reset()
-    setIsSubmitted(true); 
+    reset() //reset the data after submission
+    setIsSubmitted(true);  //mark the form as submitted 
 
     // Show a success toast after form submission
     toast({
@@ -86,24 +87,24 @@ export default function Form() {
   type FieldName = keyof Inputs
 
   const next = async () => {
-    const fields = steps[currentStep].fields
-    const output = await trigger(fields as FieldName[], { shouldFocus: true })
+    const fields = steps[currentStep].fields    //get fields for the current step
+    const output = await trigger(fields as FieldName[], { shouldFocus: true }) //validate field before moving to next step
 
-    if (!output) return
+    if (!output) return  
 
     if (currentStep < steps.length - 1) {
       if (currentStep === steps.length - 2) {
-        await handleSubmit(processForm)()
+        await handleSubmit(processForm)() //submit the form at the last step
       }
       setPreviousStep(currentStep)
-      setCurrentStep(step => step + 1)
+      setCurrentStep(step => step + 1)    //next step
     }
   }
 
   const prev = () => {
     if (currentStep > 0) {
       setPreviousStep(currentStep)
-      setCurrentStep(step => step - 1)
+      setCurrentStep(step => step - 1)   //previous step
     }
   }
 
@@ -155,7 +156,7 @@ export default function Form() {
           {steps.map((step, index) => (
             <li key={step.name} className='md:flex-1'>
               {currentStep > index ? (
-                <div className='group flex w-full flex-col border-l-4 border-sky-600 py-2 pl-4 transition-colors md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4'>
+                <div className='gro up flex w-full flex-col border-l-4 border-sky-600 py-2 pl-4 transition-colors md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4'>
                   <span className='text-sm font-medium text-sky-600 transition-colors '>
                     {step.id}
                   </span>
